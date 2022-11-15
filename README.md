@@ -18,14 +18,14 @@
 ### Training 
 - models: files for the model inc. backbones and Deeplab. Pretrained weights are used by default, this can be turned off the in the backbone files
 - trainers: main trainer which trains model. The loss function here has been changed from Cross Entropy loss to Binary Cross Entropy from the original implementation. Training and validation loss, and accuracy metrics are saved to tensorboard
-- main.py: file to run the training. To train the model run, 'cd' into the deeplab_cosm file then run :
+- main.py: file to run the training. To train the model run, `cd` into the deeplab_cosm file then run :
 
 ```
 python main.py -c configs/config.yml --train
 ```
 
 ### Inference
-- predictors: predictor script used for inference, called by 'predict.py'. The loss here is changed from CE to BCE.
+- predictors: predictor script used for inference, called by `predict.py`. The loss here is changed from CE to BCE.
 - predict.py: my script for inference on the test set. The accuracy is measured using the Dice Similarity Coefficient (1 is the best score)
 
 ### Visualise training
@@ -35,8 +35,8 @@ tensorboard --logdir '/path/to/deeplab_cosm/tensorboard'
 ```
 ### Generating new training sets
 The data in 'datasets > Figaro1k > training/validation/test' has already been split for convenience. To create a new split of training sets, delete the following folders:
-- 'datasets > Figaro1k > training'
-- 'datasets > Figaro1k > validation'
-- 'datasets > Figaro1k > test'
+- `datasets > Figaro1k > training`
+- `datasets > Figaro1k > validation`
+- `datasets > Figaro1k > test`
 
-Then run 'save_images.py'
+Then run `save_images.py`
