@@ -1,0 +1,54 @@
+dataset:
+    base_path: "/home/tle19/Desktop/deeplab_torch/datasets/DeepFashion2_mine"
+    dataset_name: "NUMPY_dataloader" 
+    mean: "0.485"
+    std: "0.225"  
+image:
+    out_stride: 16
+    base_size: 230
+    crop_size: 230
+network:
+    backbone: "resnet"  #choices=['resnet', 'xception', 'drn', 'mobilenet']
+    sync_bn: false
+    freeze_bn: false
+    use_cuda: true
+    num_classes: 2
+training:
+    workers: 4
+    loss_type: "ce"   #choices=['ce', 'focal']
+    epochs: 1500
+    start_epoch: 0
+    batch_size: 16
+    use_balanced_weights: false
+    lr: 0.0005
+    lr_scheduler: "poly"     #choices=['poly', 'step', 'cos']
+    momentum: 0.9
+    weight_decay: 0.0005
+    nesterov: false
+    callbacks:
+    weights_initialization: 
+        use_pretrained_weights: false
+        restore_from: "./experiments/last.pth.tar"
+    model_best_checkpoint: 
+        enabled: true
+        out_file: "./experiments/best.pth.tar"
+        monitor: "val_loss"
+    model_last_checkpoint: 
+        enabled: true
+        out_file: "./experiments/checkpoint_last.pth.tar"        
+    train_on_subset: 
+        enabled: false
+        dataset_fraction: 1.0   
+    output:
+        output_weights: "./snapshots/best.pth.tar"
+    tensorboard: 
+        enabled: true
+        log_dir: "./tensorboard/"
+    no_val: false
+    val_interval: 1
+inference:
+    batch_size: 2
+#gpu_ids: 0
+#seed: 1
+#ft: false
+#no_val: false
