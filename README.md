@@ -33,3 +33,10 @@ python main.py -c configs/config.yml --train
 ```
 tensorboard --logdir '/path/to/deeplab_cosm/tensorboard'
 ```
+### Generating new training sets
+The data in 'datasets > Figaro1k > training/validation/test' has already been split for convenience. To create a new split of training sets, delete the following folders:
+- 'datasets > Figaro1k > training'
+- 'datasets > Figaro1k > validation'
+- 'datasets > Figaro1k > test'
+
+Then run 'save_images.py'
